@@ -26,7 +26,8 @@
 - **期望**: 报 **security** 类 **error**
 
 ### case-convention — 违反项目约定(吞 error)
-- **缺陷**: `loadConfig()` 返回 error 但调用处完全忽略返回值, 违反 AGENTS.md「错误处理」
+- **缺陷**: `loadConfig()` 从文件读取配置(真实可能失败), 但调用处完全忽略返回值,
+  配置加载失败会被静默吞掉——违反 AGENTS.md「错误处理」
 - **期望**: 报 convention/约定类问题(warn 或 error 均可)
 
 ### case-clean — 干净重构(负样本)
