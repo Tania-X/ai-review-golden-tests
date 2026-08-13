@@ -1,0 +1,29 @@
+{
+  "case": "case-bug",
+  "pass": false,
+  "failures": [
+    "issues 数 0 < min_issues 1",
+    "未命中期望级别 ['error'](实际报出 无)"
+  ],
+  "actual": {
+    "error": 0,
+    "warn": 0,
+    "info": 0,
+    "total": 0,
+    "no_issues": false,
+    "categories": null
+  },
+  "check_conclusion": "failure",
+  "expected": {
+    "min_issues": 1,
+    "max_issues": null,
+    "severities": [
+      "error"
+    ],
+    "categories": [
+      "bug",
+      "other"
+    ],
+    "quality_pass": true
+  }
+}
