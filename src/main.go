@@ -1,8 +1,9 @@
-// Package main 提供配置加载示例.
+// Package main 提供配置加载示例(修复版: 处理 error).
 package main
 
 import (
 	"fmt"
+	"log"
 	"os"
 )
 
@@ -18,6 +19,8 @@ func loadConfig() error {
 
 // main 是程序入口。
 func main() {
-	loadConfig()
+	if err := loadConfig(); err != nil {
+		log.Fatalf("load config: %v", err)
+	}
 	fmt.Println("started")
 }
