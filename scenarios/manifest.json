@@ -1,0 +1,11 @@
+{
+  "version": 1,
+  "cases": [
+    { "name": "case-bug", "category": "positive", "levels": [0, 1] },
+    { "name": "case-security", "category": "positive", "levels": [0, 1] },
+    { "name": "case-convention", "category": "positive", "levels": [0, 1] },
+    { "name": "case-clean", "category": "negative", "levels": [0] },
+    { "name": "case-docs", "category": "negative", "levels": [0] },
+    { "name": "case-bait", "category": "boundary", "levels": [0] }
+  ]
+}

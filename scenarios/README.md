@@ -4,10 +4,20 @@
 
 ```
 scenarios/<case-name>/
-├── changes/          # 该场景 PR 应引入的文件(镜像仓库根路径)
-│   └── src/main.go   # 例: 替换基线的 main.go
+├── changes/          # buggy 版(缺陷快照, Level 0 与 Level 1 第一阶段)
+├── fixed/            # 修复版(Level 1 第二阶段; 仅正样本有)
 └── expected.json     # 期望断言
 ```
+
+`manifest.json` 是 case 注册表: 列出所有 case 及其分类(positive/negative/boundary)与测试层级(0/1)。
+
+## case 分类
+
+| 类别 | case | 审查应拒绝? | 层级 |
+|------|------|------------|------|
+| positive | bug / security / convention | 应 refuse(报 error) | 0 + 1 |
+| negative | clean / docs | 应 agree(无问题) | 0 |
+| boundary | bait | 应 agree(可 warn/info, 不报 error) | 0 |
 
 ## expected.json schema
 
@@ -25,16 +35,24 @@ scenarios/<case-name>/
 }
 ```
 
-## Phase 1 手工验证方式
-
-对单个场景, 手工执行:
+## Level 0 手工验证(单次审查)
 
 ```bash
 git checkout -b test/case-bug
 cp -r scenarios/case-bug/changes/* .
-git add . && git commit -m "test: case-bug"
+git add . && git commit -m "add user query"
 git push origin test/case-bug
-# 在 GitHub 开 PR → 观察 AI review 表现 → 比对 expected.json
+# 开 PR → 观察 AI review 表现 → 比对 expected.json
 ```
 
-Phase 2 会把这些步骤自动化。
+## Level 1 手工验证(修复闭环, 正样本)
+
+```bash
+# 接 Level 0: review 应 refuse 后
+cp -r scenarios/case-bug/fixed/* .
+git add . && git commit -m "fix review findings"
+git push origin test/case-bug
+# review 重跑(synchronize)→ 应 agree → 可 merge
+```
+
+完整方法论见 ai-tools 仓库 `docs/golden-testing.md`。
