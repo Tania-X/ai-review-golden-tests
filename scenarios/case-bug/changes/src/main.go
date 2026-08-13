@@ -1,4 +1,4 @@
-// Package main: 注入 nil 指针解引用 bug(相比基线).
+// Package main 提供用户查询示例.
 package main
 
 import "fmt"
@@ -11,15 +11,14 @@ type User struct {
 
 var cache = map[string]*User{}
 
-// getUser 从缓存取用户, 可能返回 nil。
+// getUser 根据 id 返回用户。
 func getUser(id string) *User {
 	return cache[id]
 }
 
-// getName 返回用户名; 未考虑 getUser 返回 nil 的情况。
+// getName 返回用户姓名。
 func getName(id string) string {
-	u := getUser(id)
-	return u.Name // nil 解引用: id 不存在时 panic
+	return getUser(id).Name
 }
 
 func main() {

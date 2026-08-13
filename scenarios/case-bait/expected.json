@@ -1,12 +1,12 @@
 {
   "case": "case-bait",
-  "description": "误报诱饵: 每次新建 http.Client 看似'未复用连接', 实为注释说明的设计意图",
+  "description": "每次新建 http.Client(性能/健壮性隐患), 不应被判定为 error 级 bug",
   "expect": {
     "min_issues": 0,
-    "max_issues": 0,
-    "severities": ["error"],
+    "max_issues": null,
+    "severities": ["warn", "info"],
     "categories": [],
     "quality_pass": true,
-    "note": "不应报确定性 error(设计意图已在注释说明); 最多允许 needs_review 提示"
+    "note": "报 warn/info 级建议可接受; 报 error 级 = 严重度误判(误报)"
   }
 }

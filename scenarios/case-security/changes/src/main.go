@@ -1,4 +1,4 @@
-// Package main: 注入安全问题(SQL 拼接 + 硬编码密钥).
+// Package main 提供用户查询示例.
 package main
 
 import "database/sql"
@@ -9,9 +9,9 @@ type User struct {
 	Name string
 }
 
-const dbPassword = "admin123" // 硬编码数据库密码
+const dbPassword = "admin123"
 
-// getUserByID 拼接 SQL 查询用户, 存在 SQL 注入风险。
+// getUserByID 按 id 查询用户。
 func getUserByID(db *sql.DB, id string) (*User, error) {
 	query := "SELECT * FROM users WHERE id = '" + id + "'"
 	row := db.QueryRow(query)

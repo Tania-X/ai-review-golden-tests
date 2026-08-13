@@ -14,6 +14,11 @@ min_severity: "warn"
 # 合并门禁级别(error 级问题 → check-run 失败)
 fail_on_severity: "error"
 
+# 仓库上下文: 只注入 AGENTS.md(项目约定)。
+# 刻意不收集 docs/** —— docs/golden-contract.md 是"标准答案", 绝不能进审查上下文。
+context_files:
+  - "AGENTS.md"
+
 # 质量门(judge 打分 + 自检重写): 保持开启, 用于评估打分机制本身
 quality_gate:
   enabled: true

@@ -1,19 +1,10 @@
-// Package main: 误报诱饵(看起来像问题, 实为设计意图).
+// Package main 提供 HTTP 请求示例.
 package main
 
-import (
-	"fmt"
-	"net/http"
-)
+import "net/http"
 
-// newClient 每次调用都新建 http.Client, 不复用连接池。
-// 这是有意为之: 上游代理要求每次请求独立连接, 复用连接池会导致连接被错误复用。
-func newClient() *http.Client {
-	return &http.Client{}
-}
-
-// main 是程序入口。
-func main() {
-	_ = newClient()
-	fmt.Println("ok")
+// fetch 发起 GET 请求并返回响应。
+func fetch(url string) (*http.Response, error) {
+	client := &http.Client{}
+	return client.Get(url)
 }

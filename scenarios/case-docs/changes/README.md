@@ -1,16 +1,14 @@
 # ai-review-golden-tests
 
-> AI PR Review 的黄金测试仓库 —— 用已知答案的代码变更量化验证审查质量。
+> 记录 AI PR Review 黄金测试仓库的使用说明。
 
-## 新增说明(本场景)
+## 快速开始
 
-这是 `case-docs` 场景: 纯文档变更, 不应触发任何代码问题, 质量门应 pass(走空 issues 短路)。
+1. 克隆本仓库
+2. 参考 `scenarios/README.md` 了解场景结构
+3. 按需创建场景分支, 观察 pr-review 的表现
 
-## 场景清单
+## 依赖
 
-- case-bug: nil 解引用
-- case-security: SQL 注入 + 硬编码密钥
-- case-convention: 吞 error
-- case-clean: 干净重构
-- case-docs: 纯文档变更(本场景)
-- case-bait: 设计意图诱饵
+- AI 审查由 GitHub Actions 自动触发(见 `.github/workflows/ai-review.yml`)
+- 需要仓库 Secret: `DEEPSEEK_API_KEY`
