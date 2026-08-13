@@ -1,7 +1,10 @@
-// Package main 提供用户查询示例.
+// Package main 提供用户查询示例(修复版: 参数化查询 + 环境变量密钥).
 package main
 
-import "database/sql"
+import (
+	"database/sql"
+	"os"
+)
 
 // User 表示一个用户。
 type User struct {
@@ -9,12 +12,12 @@ type User struct {
 	Name string
 }
 
-const dbPassword = "admin123"
+var dbPassword = os.Getenv("DB_PASSWORD")
 
 // getUserByID 按 id 查询用户。
 func getUserByID(db *sql.DB, id string) (*User, error) {
-	query := "SELECT * FROM users WHERE id = '" + id + "'"
-	row := db.QueryRow(query)
+	query := "SELECT * FROM users WHERE id = ?"
+	row := db.QueryRow(query, id)
 	var u User
 	err := row.Scan(&u.ID, &u.Name)
 	return &u, err
