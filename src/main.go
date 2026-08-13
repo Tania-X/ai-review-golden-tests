@@ -1,4 +1,4 @@
-// Package main 提供用户查询示例.
+// Package main 提供用户查询示例(修复版: nil 检查).
 package main
 
 import "fmt"
@@ -18,7 +18,11 @@ func getUser(id string) *User {
 
 // getName 返回用户姓名。
 func getName(id string) string {
-	return getUser(id).Name
+	u := getUser(id)
+	if u == nil {
+		return ""
+	}
+	return u.Name
 }
 
 func main() {
