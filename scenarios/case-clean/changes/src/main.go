@@ -1,4 +1,4 @@
-// Package main: 干净重构(应无问题, 期望正面评价).
+// Package main 提供求和示例.
 package main
 
 import "fmt"

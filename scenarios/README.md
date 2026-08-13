@@ -26,11 +26,12 @@ scenarios/<case-name>/
   "case": "case-bug",
   "description": "注入 nil 解引用 bug",
   "expect": {
-    "min_issues": 1,          // 期望至少报出 N 个问题
-    "max_issues": null,       // 期望最多报出 N 个(null=不限)
-    "severities": ["error"],  // 允许的 severity(空数组=不限)
-    "categories": ["bug"],    // 允许的 category(空数组=不限)
-    "quality_pass": true      // 质量门是否应 pass(不该被降级)
+    "min_issues": 1,              // 期望至少报出 N 个问题
+    "max_issues": null,           // 期望最多报出 N 个(null=不限)
+    "severities": ["error"],      // 必须命中其一(报出级别中至少一个在此集合内)
+    "forbid_severities": ["error"], // 禁止报出的级别(如边界样本禁止 error)
+    "categories": ["bug"],        // 允许的 category(空数组=不限; 当前断言器未校验, 待实现)
+    "quality_pass": true          // 质量门是否应 pass(不该被降级)
   }
 }
 ```

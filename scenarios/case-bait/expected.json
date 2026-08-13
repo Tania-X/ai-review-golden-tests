@@ -4,7 +4,7 @@
   "expect": {
     "min_issues": 0,
     "max_issues": null,
-    "severities": ["warn", "info"],
+    "forbid_severities": ["error"],
     "categories": [],
     "quality_pass": true,
     "note": "报 warn/info 级建议可接受; 报 error 级 = 严重度误判(误报)"
