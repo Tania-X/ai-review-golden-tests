@@ -1,0 +1,11 @@
+{
+  "case": "case-docs",
+  "description": "纯文档变更(README), 不应报代码问题, 质量门走空 issues 短路应 pass",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": 0,
+    "severities": [],
+    "categories": [],
+    "quality_pass": true
+  }
+}

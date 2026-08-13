@@ -1,0 +1,11 @@
+{
+  "case": "case-convention",
+  "description": "违反 AGENTS.md 约定: 调用返回 error 的函数却完全忽略返回值",
+  "expect": {
+    "min_issues": 1,
+    "max_issues": null,
+    "severities": ["warn", "error"],
+    "categories": ["convention", "bug", "other"],
+    "quality_pass": true
+  }
+}

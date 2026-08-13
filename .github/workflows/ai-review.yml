@@ -1,0 +1,30 @@
+# AI PR Review — 黄金测试仓库
+#
+# 触发: PR 打开/更新/重新打开时, 用 LLM 审查 diff 并发表 review 评论。
+# 依赖: Secret DEEPSEEK_API_KEY + ai-tools 的 pr-review action(@main)
+name: AI Review
+
+on:
+  pull_request:
+    branches: [main]
+    types: [opened, synchronize, reopened]
+  pull_request_review_comment:
+    types: [created]
+
+permissions:
+  contents: read
+  pull-requests: write
+  checks: write
+
+jobs:
+  ai-review:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v4
+
+      - name: Run AI PR Review
+        uses: Tania-X/ai-tools/pr-review@main
+        with:
+          api-key: ${{ secrets.DEEPSEEK_API_KEY }}
+          model: deepseek-chat
+          config-path: .ai-review.yaml

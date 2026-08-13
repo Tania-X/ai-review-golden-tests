@@ -1,0 +1,24 @@
+# pr-review 审查配置(golden 测试仓库)
+
+# 审查重点(作为指令进入 prompt)
+review_focus:
+  - "bug 与逻辑错误"
+  - "并发/性能隐患"
+  - "安全问题(注入/越权/密钥泄露)"
+  - "资源泄漏(连接/文件未关闭)"
+  - "明显不符合项目既有约定(命名/分层/异常处理)"
+
+# 只发出达到该级别及以上的问题(error > warn > info)
+min_severity: "warn"
+
+# 合并门禁级别(error 级问题 → check-run 失败)
+fail_on_severity: "error"
+
+# 质量门(judge 打分 + 自检重写): 保持开启, 用于评估打分机制本身
+quality_gate:
+  enabled: true
+  pass_score: 70
+  max_rewrites: 3
+
+# 线程决议驱动: 用户在线程表态后下轮不再重复报
+resolve_enabled: true

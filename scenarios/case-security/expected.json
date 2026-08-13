@@ -1,0 +1,11 @@
+{
+  "case": "case-security",
+  "description": "SQL 字符串拼接(注入) + 硬编码数据库密码",
+  "expect": {
+    "min_issues": 1,
+    "max_issues": null,
+    "severities": ["error"],
+    "categories": ["security"],
+    "quality_pass": true
+  }
+}

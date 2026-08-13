@@ -1,0 +1,11 @@
+{
+  "case": "case-bug",
+  "description": "注入 nil 指针解引用 bug: getUser 可能返回 nil, getName 直接解引用",
+  "expect": {
+    "min_issues": 1,
+    "max_issues": null,
+    "severities": ["error"],
+    "categories": ["bug", "other"],
+    "quality_pass": true
+  }
+}

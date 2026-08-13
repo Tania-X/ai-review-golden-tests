@@ -1,0 +1,11 @@
+{
+  "case": "case-clean",
+  "description": "干净重构(提取函数 + 注释), 不应报任何问题",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": 0,
+    "severities": [],
+    "categories": [],
+    "quality_pass": true
+  }
+}
