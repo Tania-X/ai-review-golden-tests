@@ -1,0 +1,11 @@
+{
+  "case": "case-severity-security",
+  "description": "clearPolicy 返回 error 被忽略, 清理失败会导致已删除角色的权限仍生效(安全/权限后果), 应报 error",
+  "expect": {
+    "min_issues": 1,
+    "max_issues": null,
+    "severities": ["error"],
+    "categories": [],
+    "quality_pass": true
+  }
+}

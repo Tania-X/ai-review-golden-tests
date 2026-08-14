@@ -1,0 +1,11 @@
+{
+  "case": "case-merge-locations",
+  "description": "同一根因(请求体字段 label 与契约 displayName 不一致)在 3 个调用处表现, 应合并为 1 条(带 locations)",
+  "expect": {
+    "min_issues": 1,
+    "max_issues": 1,
+    "severities": ["warn", "error"],
+    "categories": ["type_consistency", "other"],
+    "quality_pass": true
+  }
+}

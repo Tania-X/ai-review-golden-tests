@@ -43,6 +43,19 @@
 - **本质**: 这是**性能/健壮性建议**(warn/info), **不是会崩溃的 bug**
 - **期望**: **不报 error**; 报 warn/info 级建议可以接受, 报 error 级 = 严重度误判(误报)
 
+### case-merge-locations — 同根因多位置(合并契约)
+- **缺陷**: 3 个前端调用处(createRole/updateRole/batchCreateRoles)都用 `label` 字段拼请求体,
+  与契约字段 `displayName` 不一致——**同一根因的 3 个表现**
+- **本质**: 修复方式相同(都改成 displayName)、证据指向同一契约 → 应合并为 **1 条** issue
+  (title 概括根因, locations 列 3 个位置)
+- **期望**: **正好 1 条**(min=1, max=1); 报 2-3 条 = 合并契约未生效(规则 16)
+
+### case-severity-security — 错误忽略 + 安全后果(严重度)
+- **缺陷**: `deleteRole` 中 `clearPolicy(id)` 返回 error 被忽略; 策略清理失败时
+  已删除角色的权限仍生效(越权风险)
+- **本质**: 错误被静默忽略且后果涉及**安全/权限** → 按规则 13 例外应报 **error**
+- **期望**: 报 **error**; 只报 warn = 严重度未升(规则 13 例外未生效)
+
 ## 评估口径
 
 - **精确率(precision)** = 真命中(case-bug/security/convention 报对) / 全部报出
