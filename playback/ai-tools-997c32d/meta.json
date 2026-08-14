@@ -1,0 +1,8 @@
+{
+  "source": "ai-tools",
+  "fix_commit": "997c32d",
+  "ground_truth_source": "human-fix",
+  "defect_type": "architecture",
+  "defect_desc": "驱动器从 issue comments 拉 AI review 评论, 但 pr-review 的整体评论实际走 POST /pulls/{n}/reviews 通道, 导致永远解析 0 issues",
+  "expected_note": "架构事实: 需知道 pr-review 的评论机制才能报出, AI 报不出属合理; 通过标准=不乱报+质量门 pass"
+}

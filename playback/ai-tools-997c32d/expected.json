@@ -1,0 +1,10 @@
+{
+  "case": "playback-ai-tools-997c32d",
+  "description": "驱动器从 issue comments 拉 AI review 评论, 但 pr-review 的整体评论实际走 POST /pulls/{n}/reviews 通道, 导致永远解析 0 issues",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": null,
+    "severities": [],
+    "quality_pass": true
+  }
+}

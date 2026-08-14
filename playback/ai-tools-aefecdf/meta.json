@@ -1,0 +1,8 @@
+{
+  "source": "ai-tools",
+  "fix_commit": "aefecdf",
+  "ground_truth_source": "human-fix",
+  "defect_type": "semantic",
+  "defect_desc": "断言器 severities 字段语义: 原为白名单(全部命中), 实际语义应为'至少命中 + forbid_severities 排除', 语义设计修正",
+  "expected_note": "语义设计: AI 报不出合理; 通过标准=不乱报"
+}

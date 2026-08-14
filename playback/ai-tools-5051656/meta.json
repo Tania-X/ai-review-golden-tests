@@ -1,0 +1,8 @@
+{
+  "source": "ai-tools",
+  "fix_commit": "5051656",
+  "ground_truth_source": "ai-fix",
+  "defect_type": "requirement",
+  "defect_desc": "质量门 _quality_loop 对空 issues 也跑 judge+重写(纯文档 PR 被误降级, 浪费 ~30k token), 缺空 issues 短路",
+  "expected_note": "需求演化类优化: AI 报不出合理; 通过标准=不乱报"
+}

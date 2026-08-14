@@ -1,0 +1,13 @@
+{
+  "case": "playback-ai-tools-3c77c6d",
+  "description": "runner._save_result 写文件前未确保 results 目录存在, 目录缺失时 FileNotFoundError 导致结果丢失",
+  "expect": {
+    "min_issues": 1,
+    "max_issues": null,
+    "severities": [
+      "warn",
+      "error"
+    ],
+    "quality_pass": true
+  }
+}

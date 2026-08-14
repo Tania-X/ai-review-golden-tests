@@ -1,0 +1,10 @@
+{
+  "case": "playback-ai-tools-5051656",
+  "description": "质量门 _quality_loop 对空 issues 也跑 judge+重写(纯文档 PR 被误降级, 浪费 ~30k token), 缺空 issues 短路",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": null,
+    "severities": [],
+    "quality_pass": true
+  }
+}

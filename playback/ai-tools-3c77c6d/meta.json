@@ -1,0 +1,8 @@
+{
+  "source": "ai-tools",
+  "fix_commit": "3c77c6d",
+  "ground_truth_source": "human-fix",
+  "defect_type": "logic",
+  "defect_desc": "runner._save_result 写文件前未确保 results 目录存在, 目录缺失时 FileNotFoundError 导致结果丢失",
+  "expected_note": "逻辑缺陷: AI 应能报出'写文件前目录可能不存在'"
+}

@@ -1,0 +1,10 @@
+{
+  "case": "playback-ai-tools-aefecdf",
+  "description": "断言器 severities 字段语义: 原为白名单(全部命中), 实际语义应为'至少命中 + forbid_severities 排除', 语义设计修正",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": null,
+    "severities": [],
+    "quality_pass": true
+  }
+}
