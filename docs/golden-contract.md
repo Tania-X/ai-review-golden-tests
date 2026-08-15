@@ -56,6 +56,12 @@
   → 按 2026-08-15 策略(PR#5 教训): 一律 **warn**, 不得升 error
 - **期望**: 报 **warn**(约定违反类); 报 error = 严重度误判(旧规则 8 例外已废除)
 
+### case-refactor-context — 跨文件行为变更(需主动查看仓库, 2026-08-15)
+- **缺陷**: `getUserName` 行为变更(返回单名), 破坏**未出现在 diff** 的调用方 `src/display.go`
+  (render 期望完整姓名) — AI 必须调用工具(read_file/grep)才能发现
+- **本质**: 基线 `src/display.go` 是既有代码(不在任何场景 diff), 只审 diff 会漏报
+- **期望**: 报 1 条(行为变更破坏调用方, 能指出 display.go); 只看 diff 漏报 = 上下文工具未生效
+
 ## 评估口径
 
 - **精确率(precision)** = 真命中(case-bug/security/convention 报对) / 全部报出

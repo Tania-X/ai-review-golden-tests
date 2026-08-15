@@ -1,0 +1,11 @@
+{
+  "case": "case-refactor-context",
+  "description": "getUserName 行为变更(返回单名)破坏未出现在 diff 的调用方 display.go — AI 应主动调用工具查看仓库发现跨文件影响",
+  "expect": {
+    "min_issues": 1,
+    "max_issues": null,
+    "severities": ["warn", "error"],
+    "categories": ["bug", "other"],
+    "quality_pass": true
+  }
+}

@@ -8,6 +8,7 @@
     { "name": "case-docs", "category": "negative", "levels": [0] },
     { "name": "case-bait", "category": "boundary", "levels": [0] },
     { "name": "case-merge-locations", "category": "positive", "levels": [0, 1] },
-    { "name": "case-severity-security", "category": "positive", "levels": [0, 1] }
+    { "name": "case-severity-security", "category": "positive", "levels": [0, 1] },
+    { "name": "case-refactor-context", "category": "positive", "levels": [0] }
   ]
 }
