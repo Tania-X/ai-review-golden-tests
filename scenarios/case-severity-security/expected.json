@@ -1,11 +1,12 @@
 {
   "case": "case-severity-security",
-  "description": "clearPolicy 返回 error 被忽略, 清理失败会导致已删除角色的权限仍生效(安全/权限后果), 应报 error",
+  "description": "clearPolicy 返回 error 被忽略(违反'error 必须处理'约定), 但清理失败是假设性故障路径 — 2026-08-15 策略: 必须报 warn, 禁止升 error",
   "expect": {
     "min_issues": 1,
     "max_issues": null,
-    "severities": ["error"],
-    "categories": [],
+    "severities": ["warn"],
+    "forbid_severities": ["error"],
+    "categories": ["convention", "other"],
     "quality_pass": true
   }
 }
