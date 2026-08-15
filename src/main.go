@@ -1,17 +1,28 @@
-// Package main 提供 golden 测试的基线代码。
-//
-// 该文件是"无问题"的基线版本, 各场景在其上注入已知变更(见 scenarios/)。
+// Package main 提供前端 API 调用封装示例(与后端契约对照).
 package main
 
-import "fmt"
+// contract 后端契约: 角色请求体字段。
+// 来自 spec: RoleRequest { name, displayName }
+type contract struct{}
 
-// User 表示一个用户。
-type User struct {
-	ID   int
-	Name string
+// api 前端调用封装。
+type api struct{}
+
+// createRole 调用 POST /roles。
+func (a *api) createRole(name, label string) {
+	post("/roles", map[string]string{"name": name, "label": label})
 }
 
-// main 是程序入口。
-func main() {
-	fmt.Println("golden test baseline")
+// updateRole 调用 PUT /roles/{name}。
+func (a *api) updateRole(name, label string) {
+	post("/roles/"+name, map[string]string{"name": name, "label": label})
 }
+
+// batchCreateRoles 批量创建角色。
+func (a *api) batchCreateRoles(items [][2]string) {
+	for _, it := range items {
+		post("/roles", map[string]string{"name": it[0], "label": it[1]})
+	}
+}
+
+func post(_ string, _ map[string]string) {}
