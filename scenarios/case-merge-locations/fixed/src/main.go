@@ -13,7 +13,7 @@ func (a *api) createRole(name, displayName string) {
 	post("/roles", map[string]string{"name": name, "displayName": displayName})
 }
 
-// updateRole 调用 PUT /roles/{name}。
+// updateRole 调用 POST /roles/{name}。
 func (a *api) updateRole(name, displayName string) {
 	post("/roles/"+name, map[string]string{"name": name, "displayName": displayName})
 }
