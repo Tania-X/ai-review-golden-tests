@@ -5,7 +5,8 @@
     "min_issues": 1,
     "max_issues": null,
     "severities": [
-      3
+      3,
+      4
     ],
     "categories": [
       "convention",
