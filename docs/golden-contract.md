@@ -18,17 +18,17 @@
 
 ### case-bug — nil 指针解引用
 - **缺陷**: `getUser` 从 map 取值, 缺 key 时返回 nil; `getName` 直接 `getUser(id).Name` 解引用 → panic
-- **期望**: 报 **error** 级问题(空指针/nil 解引用)
+- **期望**: 报 **4-5 级**(严重/致命, 空指针/nil 解引用)
 
 ### case-security — SQL 注入 + 硬编码密钥
 - **缺陷①**: `query := "SELECT ... '" + id + "'"` 字符串拼接 → SQL 注入
 - **缺陷②**: `const dbPassword = "admin123"` 硬编码敏感信息
-- **期望**: 报 **security** 类 **error**
+- **期望**: 报 **security** 类 **4-5 级**
 
 ### case-convention — 违反项目约定(吞 error)
 - **缺陷**: `loadConfig()` 从文件读取配置(真实可能失败), 但调用处完全忽略返回值,
   配置加载失败会被静默吞掉——违反 AGENTS.md「错误处理」
-- **期望**: 报 convention/约定类问题(warn 或 error 均可)
+- **期望**: 报 convention/约定类问题(**3 级必修**及以上)
 
 ### case-clean — 干净重构(负样本)
 - **缺陷**: 无(提取函数 + 正常注释)
@@ -40,8 +40,8 @@
 
 ### case-bait — 性能/风格类隐患(严重度判断)
 - **缺陷**: 每次新建 `http.Client`(不复用连接)、未设置超时
-- **本质**: 这是**性能/健壮性建议**(warn/info), **不是会崩溃的 bug**
-- **期望**: **不报 error**; 报 warn/info 级建议可以接受, 报 error 级 = 严重度误判(误报)
+- **本质**: 这是**性能/健壮性建议**(2 级以下), **不是会崩溃的 bug**
+- **期望**: **不报 4/5 级**; 报 2/3 级建议可以接受, 报 4/5 级 = 严重度误判(误报)
 
 ### case-merge-locations — 同根因多位置(合并契约)
 - **缺陷**: 3 个前端调用处(createRole/updateRole/batchCreateRoles)都用 `label` 字段拼请求体,
@@ -53,8 +53,8 @@
 ### case-severity-security — 错误忽略 + 安全后果(严重度, 2026-08-15 策略修订)
 - **缺陷**: `deleteRole` 中 `clearPolicy(id)` 返回 error 被忽略(违反 AGENTS.md「error 必须处理」约定)
 - **本质**: 策略清理失败属**假设性故障路径**("若失败则权限残留", 无真实必然触发路径)
-  → 按 2026-08-15 策略(PR#5 教训): 一律 **warn**, 不得升 error
-- **期望**: 报 **warn**(约定违反类); 报 error = 严重度误判(旧规则 8 例外已废除)
+  → 按 2026-08-15 策略(PR#5 教训): 假设性故障 → **2 级**(仅提醒, 不得升 4/5)
+- **期望**: 报 **2 级**(假设性+安全); 报 4/5 = 严重度误判
 
 ### case-refactor-context — 跨文件行为变更(需主动查看仓库, 2026-08-15)
 - **缺陷**: `getUserName` 行为变更(返回单名), 破坏**未出现在 diff** 的调用方 `src/display.go`
