@@ -5,8 +5,8 @@
     "min_issues": 1,
     "max_issues": 1,
     "severities": [
-      2,
-      3
+      3,
+      4
     ],
     "categories": [
       "type_consistency",

@@ -4,8 +4,15 @@
   "expect": {
     "min_issues": 1,
     "max_issues": null,
-    "severities": ["warn", "error"],
-    "categories": ["bug", "other"],
+    "severities": [
+      3,
+      4,
+      5
+    ],
+    "categories": [
+      "bug",
+      "other"
+    ],
     "quality_pass": true
   }
 }
