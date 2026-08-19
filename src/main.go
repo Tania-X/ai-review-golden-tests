@@ -1,6 +1,4 @@
-// Package main 提供 golden 测试的基线代码。
-//
-// 该文件是"无问题"的基线版本, 各场景在其上注入已知变更(见 scenarios/)。
+// Package main 提供求和示例.
 package main
 
 import "fmt"
@@ -11,7 +9,17 @@ type User struct {
 	Name string
 }
 
+// sum 计算整数切片之和。
+func sum(nums []int) int {
+	total := 0
+	for _, n := range nums {
+		total += n
+	}
+	return total
+}
+
 // main 是程序入口。
 func main() {
-	fmt.Println("golden test baseline")
+	nums := []int{1, 2, 3, 4, 5}
+	_, _ = fmt.Printf("sum=%d\n", sum(nums)) // 显式接收返回值(输出到 stdout 失败可忽略)
 }
