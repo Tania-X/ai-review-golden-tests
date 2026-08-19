@@ -21,5 +21,5 @@ func sum(nums []int) int {
 // main 是程序入口。
 func main() {
 	nums := []int{1, 2, 3, 4, 5}
-	fmt.Printf("sum=%d\n", sum(nums))
+	_, _ = fmt.Printf("sum=%d\n", sum(nums)) // 显式接收返回值(输出到 stdout 失败可忽略)
 }
