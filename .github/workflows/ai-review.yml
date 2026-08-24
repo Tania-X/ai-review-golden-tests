@@ -28,3 +28,9 @@ jobs:
           api-key: ${{ secrets.DEEPSEEK_API_KEY }}
           model: deepseek-chat
           config-path: .ai-review.yaml
+          # 成本核算: 未填单价时自动按 DeepSeek 官方峰谷价表计算(ai-tools@main 内置)
+          # OTel 可观测性: 上报审查链路 trace 到自建 jaeger(4318, admin 认证)
+          otel-enabled: "1"
+          otel-endpoint: "http://47.98.234.129:4318"
+          otel-service-name: "ai-tools-review"
+          otel-headers: ${{ secrets.JAEGER_OTLP_AUTH }}
