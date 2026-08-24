@@ -9,7 +9,12 @@ scenarios/<case-name>/
 └── expected.json     # 期望断言
 ```
 
-`manifest.json` 是 case 注册表: 列出所有 case 及其分类(positive/negative/boundary)与测试层级(0/1)。
+`manifest.json` 是 case 注册表: 列出所有 case 及其分类(positive/negative/boundary)、测试层级(0/1)、
+**能力维度(capability)** 与 **语言(language)**。
+
+> capability 是"审查能力"维度(语言无关, 报告按它聚合通过率):
+> `bug / security / convention / severity / merge-locations / context / no-false-positive`
+> language 是场景载体语言(当前全部 go; 语言特定场景后续按需补充, 不需要全量复制)。
 
 ## case 分类
 
