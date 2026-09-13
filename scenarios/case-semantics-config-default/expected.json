@@ -1,0 +1,16 @@
+{
+  "case": "case-semantics-config-default",
+  "description": "`x or default` 的 default 来自配置对象, 不是硬编码常量",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": null,
+    "forbid_severities": [
+      3,
+      4,
+      5
+    ],
+    "categories": [],
+    "quality_pass": true,
+    "note": "误报'未传 base_url 会打到硬编码 localhost'"
+  }
+}

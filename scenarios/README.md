@@ -13,8 +13,25 @@ scenarios/<case-name>/
 **能力维度(capability)** 与 **语言(language)**。
 
 > capability 是"审查能力"维度(语言无关, 报告按它聚合通过率):
-> `bug / security / convention / severity / merge-locations / context / no-false-positive`
-> language 是场景载体语言(当前全部 go; 语言特定场景后续按需补充, 不需要全量复制)。
+> `bug / security / convention / severity / merge-locations / context / no-false-positive /
+> language-semantics`
+> language 是场景载体语言(go / python)。
+
+## language-semantics(2026-09-13 新增)
+
+针对**语言先验误报**: 正确代码 + 与其它语言(Java/JS)直觉相反的语言规则。
+这组用例全部是 **negative**(期望不被报), 判据用 `forbid_severities: [3,4,5]`:
+允许 1-2 级风格建议, 但把正确代码判成必修及以上即为误报。
+
+| case | 与直觉相反的点 |
+|------|----------------|
+| case-semantics-truthiness | 含空列表的 dict 仍为真(`{"data_sources": []}` 不会被丢弃) |
+| case-semantics-exception-mapping | 异常按类集中注册、沿 MRO 取最精确处理器, 路由内无需逐个 try/except |
+| case-semantics-async-scope | async generator 必须用 asynccontextmanager 包裹; `async with` 内 await 不会提前释放资源 |
+| case-semantics-dataclass | 普通 dataclass(含 frozen)**不校验**参数值, 非法值表现为查不到而非崩溃 |
+| case-semantics-config-default | `x or default` 的 default 来自配置对象, 不是硬编码常量 |
+
+`stack.languages` 已在仓库 `.ai-review.yaml` 声明为 `[go, python]`, 引擎会注入对应的语义清单。
 
 ## case 分类
 

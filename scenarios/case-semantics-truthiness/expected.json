@@ -1,0 +1,16 @@
+{
+  "case": "case-semantics-truthiness",
+  "description": "Python 真值判断: 含空列表的 dict 仍为真, filters 不会被丢弃",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": null,
+    "forbid_severities": [
+      3,
+      4,
+      5
+    ],
+    "categories": [],
+    "quality_pass": true,
+    "note": "用 Java/JS 直觉会认为 {\"data_sources\": []} 是 falsy → 误报'空过滤器被丢弃/检索越权'"
+  }
+}

@@ -1,0 +1,16 @@
+{
+  "case": "case-semantics-dataclass",
+  "description": "普通 dataclass(含 frozen)不校验参数值, 非法值表现为查不到而非崩溃",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": null,
+    "forbid_severities": [
+      3,
+      4,
+      5
+    ],
+    "categories": [],
+    "quality_pass": true,
+    "note": "用 Java 值对象直觉会认为构造器会校验 → 误报'非法 tenant_id 会 500'"
+  }
+}
