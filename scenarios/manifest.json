@@ -1,14 +1,136 @@
 {
   "version": 2,
   "cases": [
-    { "name": "case-bug", "category": "positive", "levels": [0, 1], "capability": "bug", "language": "go" },
-    { "name": "case-security", "category": "positive", "levels": [0, 1], "capability": "security", "language": "go" },
-    { "name": "case-convention", "category": "positive", "levels": [0, 1], "capability": "convention", "language": "go" },
-    { "name": "case-clean", "category": "negative", "levels": [0], "capability": "no-false-positive", "language": "go" },
-    { "name": "case-docs", "category": "negative", "levels": [0], "capability": "no-false-positive", "language": "go" },
-    { "name": "case-bait", "category": "boundary", "levels": [0], "capability": "no-false-positive", "language": "go" },
-    { "name": "case-merge-locations", "category": "positive", "levels": [0, 1], "capability": "merge-locations", "language": "go" },
-    { "name": "case-severity-security", "category": "positive", "levels": [0, 1], "capability": "severity", "language": "go" },
-    { "name": "case-refactor-context", "category": "positive", "levels": [0], "capability": "context", "language": "go" }
+    {
+      "name": "case-bug",
+      "category": "positive",
+      "levels": [
+        0,
+        1
+      ],
+      "capability": "bug",
+      "language": "go"
+    },
+    {
+      "name": "case-security",
+      "category": "positive",
+      "levels": [
+        0,
+        1
+      ],
+      "capability": "security",
+      "language": "go"
+    },
+    {
+      "name": "case-convention",
+      "category": "positive",
+      "levels": [
+        0,
+        1
+      ],
+      "capability": "convention",
+      "language": "go"
+    },
+    {
+      "name": "case-clean",
+      "category": "negative",
+      "levels": [
+        0
+      ],
+      "capability": "no-false-positive",
+      "language": "go"
+    },
+    {
+      "name": "case-docs",
+      "category": "negative",
+      "levels": [
+        0
+      ],
+      "capability": "no-false-positive",
+      "language": "go"
+    },
+    {
+      "name": "case-bait",
+      "category": "boundary",
+      "levels": [
+        0
+      ],
+      "capability": "no-false-positive",
+      "language": "go"
+    },
+    {
+      "name": "case-merge-locations",
+      "category": "positive",
+      "levels": [
+        0,
+        1
+      ],
+      "capability": "merge-locations",
+      "language": "go"
+    },
+    {
+      "name": "case-severity-security",
+      "category": "positive",
+      "levels": [
+        0,
+        1
+      ],
+      "capability": "severity",
+      "language": "go"
+    },
+    {
+      "name": "case-refactor-context",
+      "category": "positive",
+      "levels": [
+        0
+      ],
+      "capability": "context",
+      "language": "go"
+    },
+    {
+      "name": "case-semantics-truthiness",
+      "category": "negative",
+      "levels": [
+        0
+      ],
+      "capability": "language-semantics",
+      "language": "python"
+    },
+    {
+      "name": "case-semantics-exception-mapping",
+      "category": "negative",
+      "levels": [
+        0
+      ],
+      "capability": "language-semantics",
+      "language": "python"
+    },
+    {
+      "name": "case-semantics-async-scope",
+      "category": "negative",
+      "levels": [
+        0
+      ],
+      "capability": "language-semantics",
+      "language": "python"
+    },
+    {
+      "name": "case-semantics-dataclass",
+      "category": "negative",
+      "levels": [
+        0
+      ],
+      "capability": "language-semantics",
+      "language": "python"
+    },
+    {
+      "name": "case-semantics-config-default",
+      "category": "negative",
+      "levels": [
+        0
+      ],
+      "capability": "language-semantics",
+      "language": "python"
+    }
   ]
 }

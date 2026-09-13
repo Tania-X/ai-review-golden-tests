@@ -1,0 +1,16 @@
+{
+  "case": "case-semantics-async-scope",
+  "description": "async generator 必须用 asynccontextmanager 包裹; async with 内 await 不会提前释放",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": null,
+    "forbid_severities": [
+      3,
+      4,
+      5
+    ],
+    "categories": [],
+    "quality_pass": true,
+    "note": "误报'多此一举的包装'或'文件/连接在块内被提前释放'"
+  }
+}
