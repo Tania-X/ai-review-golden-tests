@@ -15,9 +15,12 @@ class Settings:
 
 
 def _env_float(name: str, default: float) -> float:
-    """读取浮点配置: 未设置或写了非法值时回退到默认值。"""
+    """读取浮点配置: 未设置或写了非法值时回退到默认值(两种情形分开判断)。"""
+    raw = os.environ.get(name)
+    if raw is None or not raw.strip():
+        return default
     try:
-        return float(os.environ.get(name, ""))
+        return float(raw)
     except ValueError:
         return default
 
@@ -34,7 +37,10 @@ settings = load_settings()
 
 
 def client_for(base_url: str | None = None, *, timeout: float | None = None) -> dict[str, object]:
-    """构造客户端: 未显式传入时回退到配置值(而非内置常量)。"""
-    resolved_base = base_url or settings.base_url
-    resolved_timeout = timeout or settings.timeout
+    """构造客户端: 未显式传入时回退到配置值(而非内置常量)。
+
+    用 `is None` 而不是 `or`: 0 是合法超时值(不超时), `or` 会把它当假值丢掉。
+    """
+    resolved_base = settings.base_url if base_url is None else base_url
+    resolved_timeout = settings.timeout if timeout is None else timeout
     return {"base_url": resolved_base, "timeout": resolved_timeout}
