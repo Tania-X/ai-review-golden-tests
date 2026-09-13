@@ -14,6 +14,11 @@ min_severity: "warn"
 # 合并门禁级别(error 级问题 → check-run 失败)
 fail_on_severity: "error"
 
+# 技术栈声明(P0-4): 本仓以 Go 用例为载体, 另有一组 Python 语言语义用例
+# (scenarios/case-semantics-*), 故两种语言都声明 —— 语义清单只作"提醒", 不影响 Go 用例判定
+stack:
+  languages: [go, python]
+
 # 仓库上下文: 只注入 AGENTS.md(项目约定)。
 # 刻意不收集 docs/** —— docs/golden-contract.md 是"标准答案", 绝不能进审查上下文。
 context_files:

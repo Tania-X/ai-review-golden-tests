@@ -1,0 +1,16 @@
+{
+  "case": "case-semantics-exception-mapping",
+  "description": "异常按类集中注册处理器(沿 MRO 取最精确), 路由内不逐个 try/except",
+  "expect": {
+    "min_issues": 0,
+    "max_issues": null,
+    "forbid_severities": [
+      3,
+      4,
+      5
+    ],
+    "categories": [],
+    "quality_pass": true,
+    "note": "用 Java 直觉会认为未捕获的异常必然 500 → 误报'领域错误返回 500'"
+  }
+}
