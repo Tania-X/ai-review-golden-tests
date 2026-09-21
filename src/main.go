@@ -1,17 +1,10 @@
-// Package main 提供 golden 测试的基线代码。
-//
-// 该文件是"无问题"的基线版本, 各场景在其上注入已知变更(见 scenarios/)。
+// Package main 提供 HTTP 请求示例.
 package main
 
-import "fmt"
+import "net/http"
 
-// User 表示一个用户。
-type User struct {
-	ID   int
-	Name string
-}
-
-// main 是程序入口。
-func main() {
-	fmt.Println("golden test baseline")
+// fetch 发起 GET 请求并返回响应。
+func fetch(url string) (*http.Response, error) {
+	client := &http.Client{}
+	return client.Get(url)
 }
