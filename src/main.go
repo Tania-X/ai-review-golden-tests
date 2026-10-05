@@ -1,17 +1,15 @@
-// Package main 提供 golden 测试的基线代码。
-//
-// 该文件是"无问题"的基线版本, 各场景在其上注入已知变更(见 scenarios/)。
+// Package main 提供角色删除示例.
 package main
 
-import "fmt"
-
-// User 表示一个用户。
-type User struct {
-	ID   int
-	Name string
+// clearPolicy 清理角色的权限策略。
+func clearPolicy(id int) error {
+	return nil
 }
 
-// main 是程序入口。
-func main() {
-	fmt.Println("golden test baseline")
+// deleteRole 删除角色。
+func deleteRole(id int) {
+	deleteRoleRecord(id)
+	clearPolicy(id)
 }
+
+func deleteRoleRecord(id int) {}
