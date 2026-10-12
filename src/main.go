@@ -1,9 +1,7 @@
-// Package main 提供 golden 测试的基线代码。
-//
-// 该文件是"无问题"的基线版本, 各场景在其上注入已知变更(见 scenarios/)。
+// Package main 提供用户查询示例.
 package main
 
-import "fmt"
+import "database/sql"
 
 // User 表示一个用户。
 type User struct {
@@ -11,7 +9,13 @@ type User struct {
 	Name string
 }
 
-// main 是程序入口。
-func main() {
-	fmt.Println("golden test baseline")
+const dbPassword = "admin123"
+
+// getUserByID 按 id 查询用户。
+func getUserByID(db *sql.DB, id string) (*User, error) {
+	query := "SELECT * FROM users WHERE id = '" + id + "'"
+	row := db.QueryRow(query)
+	var u User
+	err := row.Scan(&u.ID, &u.Name)
+	return &u, err
 }
