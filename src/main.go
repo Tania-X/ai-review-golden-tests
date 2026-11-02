@@ -1,17 +1,23 @@
-// Package main 提供 golden 测试的基线代码。
-//
-// 该文件是"无问题"的基线版本, 各场景在其上注入已知变更(见 scenarios/)。
+// Package main 提供配置加载示例.
 package main
 
-import "fmt"
+import (
+	"fmt"
+	"os"
+)
 
-// User 表示一个用户。
-type User struct {
-	ID   int
-	Name string
+// loadConfig 从配置文件读取配置。
+func loadConfig() error {
+	data, err := os.ReadFile("config.yaml")
+	if err != nil {
+		return err
+	}
+	_ = data // 简化: 本例不解析内容
+	return nil
 }
 
 // main 是程序入口。
 func main() {
-	fmt.Println("golden test baseline")
+	loadConfig()
+	fmt.Println("started")
 }
